@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>My Groups</title>
+    <style> table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+    </head>
+    <body>
+        <h1>Create a new group!</h1>
+        <div>
+            <form action="/createGroup" method="post">
+                <input type="text" name="newgroup" placeholder="New Group Name?" />
+                <input type="submit" value="Create">
+            </form>
+        </div>
+
+        {% if error %}
+            {{ error }}
+        {% endif %}
+
+        <h2>Groups you are currently in</h2>
+        <table>
+            <th>Group Name</th>
+        {% for line in groups %}
+            <tr>
+                <td>{{line.groupName}}</td>
+            </tr>
+        {% endfor %}
+        </table>
+
+        <h2>Add someone to your group!</h2>
+        <form action="/addMember" method="post" id="addMemberform">
+            <input type ="text" name="newmember" placeholder="New member name" />
+            <input type ="submit" value="add">
+        </form>
+
+        <select name="grouplist" form="addMemberform">
+            <option value="" selected disabled hidden>Select</option>
+            {% for line in groups %}
+            <option value={{line.groupName}}>{{line.groupName}}</option>
+            {% endfor %}
+        </select>
+        <div>
+            <a href="/">Go back</a>
+        </div>
+    </body>
+</html>

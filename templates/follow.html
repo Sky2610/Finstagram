@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>Follow Menu</title>
+    <style> table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+    </head>
+    <body>
+        <h2>Follow a user!</h2>
+        <div>
+            <form action="/followAuth" method="post">
+                <input type ="text" name="followee" placeholder="Enter who you want to follow" />
+                <input type ="submit" value="follow">
+            </form>
+        </div>
+
+
+        <h2>Pending Outgoing Requests</h2>
+        <table>
+        {% for line in pending %}
+            <tr>
+                <td>{{line.followeeUsername}}</td>
+            </tr>
+        {% endfor %}
+        </table>
+
+        <h2>Already Following</h2>
+        <table>
+        {% for line in following %}
+            <tr>
+                <td>{{line.followeeUsername}}</td>
+            </tr>
+        {% endfor %}
+        </table>
+
+        <h3>Incoming Follow Requests</h3>
+        <a href="/acceptFollow">View Requests</a><br>
+        <a href="/">Go Home</a>
+
+
+
+    </body>
+</html>

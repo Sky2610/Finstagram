@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>Image Upload</title>
+    </head>
+    <body>
+        <h1>Upload an Image!</h1>
+        <div>
+            <form action="/uploadImage" method="post" enctype="multipart/form-data">
+                <input type="radio" name="allFollowers" value="Yes" checked> Show to all followers<br>
+                <input type="radio" name="allFollowers" value=""> Do not show to all followers<br>
+                <input type="file" name="imageToUpload" accept="image/*">
+                <br/>
+                {% for group in groups %}   
+                <input type="checkbox" name="{{group.groupName}}" value="{{group.groupOwner}}"> Share with {{group.groupName}}!<br>
+                {% endfor %}
+                <input type="submit" value="Upload">
+            </form>
+        </div>
+        <br/>
+        <a href="/">Go back</a>
+    </body>
+</html>

@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>Tag requests</title>
+    <style> table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+    </head>
+    <body>
+        <h1>Incoming Requests</h1>
+        <div>
+        <table>
+            <th>Photo</th>
+            <th>Action</th>
+        {% for photo in photos %}
+            <tr>
+                <td><img src="/image/{{photo.filePath}}" width="300"/></td>
+                <td>
+                    <form action="/acceptTagAuth" method="post">
+                    <input type="radio" name="accepted" value="true"> Accept
+                    <input type="radio" name="accepted" value="false"> Decline
+                    <input type ="hidden" id= "photoID" name="photoID" value="{{photo.photoID}}">
+                    <input type="submit" value="Submit">
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+        </div>
+
+        <a href="/">Go Home</a>
+    </body>
+</html>

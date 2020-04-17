@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>Finstagram</title>
+    <style> table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+    </head>
+    <body>
+        <h1>Image Gallery</h1>
+        <div>
+        <table>
+            <th>Photos</th>
+            <th>Posted by</th>
+            <th>Posted on</th>
+            <th>People Tagged</th>
+            <th>Tag Someone!</th>
+            {% for image in images %}
+            <tr>
+                <td><img src="/image/{{image.filePath}}" width="300"/></td>
+                <td>{{image.photoOwner}}</td>
+                <td>{{image.timestamp}}</td>
+                <td>{{image.taggees}}</td>
+                <td>
+                    <form action="/tagAuth" method="post">
+                        <input type ="text" name="taggee" placeholder="Enter who you want to tag on this post" />
+                        <input type ="hidden" id= "photoID" name="photoID" value="{{image.photoID}}">
+                        <input type ="submit" value="tag">
+                    </form>
+                </td>
+
+            </tr>
+
+            {% endfor %}
+        </table>
+        </div>
+        <a href="/">Go back</a>
+    </body>
+</html>

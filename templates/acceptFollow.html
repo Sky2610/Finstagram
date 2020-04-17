@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>Pending follow requests</title>
+    <style> table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+    </head>
+    <body>
+        <h1>Incoming requests</h1>
+
+        <table>
+            <th>Username</th>
+            <th>Action</th>
+        {% for line in requests %}
+            <tr>
+                <td>{{line.followerUsername}}</td>
+                <td>
+                    <form action="/acceptfollowAuth" method="post">
+                    <input type="radio" name="accepted" value="true"> Accept
+                    <input type="radio" name="accepted" value="false" checked> Decline
+                    <input type ="hidden" id= "followerUsername" name="followerUsername" value="{{line.followerUsername}}">
+                    <input type="submit" value="Submit">
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+
+        <h1>Followers</h1>
+        <table>
+            <th>Username</th>
+        {% for line in followers %}
+            <tr>
+                <td>{{line.followerUsername}}</td>
+            </tr>
+        {% endfor %}
+        </table>
+
+
+        <a href="/follow">Go back</a>
+    </body>
+</html>

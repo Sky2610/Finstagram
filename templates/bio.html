@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>Biography</title>
+    </head>
+    <body>
+        <h1>Write your new bio!</h1>
+        <div>
+            <form action="/bioAuth" method="post">
+                <input type="text" name="bio" placeholder="Express yourself" />
+                <input type="submit" value="Update">
+            </form>
+        </div>
+        {% if error %}
+            {{ error }}
+        {% endif %}
+        <a href="/">Go back</a>
+    </body>
+</html>
