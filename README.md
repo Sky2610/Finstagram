@@ -1,0 +1,1 @@
+# Finstagram: Using flask and mySQL databases, Finstagram is a web application for sharing photos. Users are able to log in, post photos, add other users as friends, follow other users, and tag other users in photo posts.
